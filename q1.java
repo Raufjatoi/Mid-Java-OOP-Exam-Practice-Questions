@@ -79,13 +79,13 @@ public class q1 {
         // Creating players for team 1
         Player[] team1 = new Player[11];
         for (int i = 0; i < 11; i++) {
-            team1[i] = new Player("Player" + (i + 1), (int)(Math.random() * 100), (int)(Math.random() * 5));
+            team1[i] = new Player("Player" + (i + 1), (int)(Math.random() * 100), (int)(Math.random() * 3));
         }
 
         // Creating players for team 2
         Player[] team2 = new Player[11];
         for (int i = 0; i < 11; i++) {
-            team2[i] = new Player("Player" + (i + 12), (int)(Math.random() * 100), (int)(Math.random() * 5));
+            team2[i] = new Player("Player" + (i + 12), (int)(Math.random() * 100), (int)(Math.random() * 2));
         }
 
         // Initializing the cricket match
