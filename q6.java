@@ -1,117 +1,128 @@
-//6. Social Media News Feed:
-
 import java.util.Date;
-
-import javax.print.attribute.standard.DateTimeAtCreation;
+import java.util.ArrayList;
 
 //o Design a class named Post with properties for author name, content (text),
 //timestamp, and number of likes.
 class Post {
-    // properts 
-    String author ; 
-    String content ;
-    Date timestamp ;
-    int likes ; 
+    // properties
+    String author;
+    String content;
+    Date timestamp;
+    int likes;
 
-    // construct 
-    public Post (String author , String content  ){
-        this.author = author ;
-        this.content = content ;
-        this.timestamp = null;
-        this.likes = 0 ; // at beggni likes be 0
-
+    // constructor
+    public Post(String author, String content) {
+        this.author = author;
+        this.content = content;
+        this.timestamp = new Date();
+        this.likes = 0; // at beginning likes be 0
     }
-    // getter funcs 
-    public String getauthor (){
+
+    // getter funcs
+    public String getAuthor() {
         return author;
     }
-    public String getcontent (){
-        return content ;
+
+    public String getContent() {
+        return content;
     }
-    public Date geDate (){
-        return timestamp ;
+
+    public Date getDate() {
+        return timestamp;
     }
-    public int getlikes (){
-        return likes ;
+
+    public int getLikes() {
+        return likes;
     }
-    //incre likes 
-    public int uplikes (){
-        return likes ++;
+
+    // increase likes
+    public void upLikes() {
+        likes++;
     }
 }
+
 //o Create a class named SocialMediaFeed that holds an array of Post objects
 //representing a user's news feed.
 class SocialMediaFeed {
-    static Post [] user ;
+    private ArrayList<Post> userFeed;
 
-    //construct 
-    public SocialMediaFeed (Post [] user ){
-        this.user = user;
-    } 
-    //getter 
-    public Post [] getuser (){
-        return user ;
+    // constructor
+    public SocialMediaFeed() {
+        this.userFeed = new ArrayList<>();
     }
 
-//o Implement functionalities in SocialMediaFeed to:
-// Add a new post to the feed, displaying it at the top (most recent).
-    public static void addpost (Post post ){
-        post.Add(user);
-        }
-    public static void display (){
-        for (int i = 0; i < user.length; i++ ){
-            System.out.println(user[-i+1].author + "posted " + user[-i+1].content + "at" + user[-i+1].timestamp + "likes = " + user[-1+1].likes);
+    // getter
+    public ArrayList<Post> getUserFeed() {
+        return userFeed;
+    }
+
+    //o Implement functionalities in SocialMediaFeed to:
+    // Add a new post to the feed, displaying it at the top (most recent).
+    public void addPost(Post post) {
+        userFeed.add(0, post);
+    }
+
+    // Display all posts
+    public void display() {
+        for (Post post : userFeed) {
+            System.out.println(post.author + " posted \"" + post.content + "\" at " + post.timestamp + ", likes = " + post.likes);
         }
     }
-// Like a post by a specific author and increment its like count (ensure the
-//post exists).
-    public static void addlike (Post p){
-        for (int i = 0; i < user.length; i ++ ){
-            if ( p.author == user[i].author ){
-                p.uplikes();
+
+    // Like a post by a specific author and increment its like count (ensure the
+    //post exists).
+    public void addLike(String author) {
+        for (Post post : userFeed) {
+            if (post.author.equals(author)) {
+                post.upLikes();
+                return;
             }
-            else {
-                System.out.println("didnt found post ");
+        }
+        System.out.println("Didn't find post by " + author);
+    }
+
+    // Search for posts by a particular author and display them in reverse
+    //chronological order (newest first).
+    public void searchPosts(String author) {
+        ArrayList<Post> foundPosts = new ArrayList<>();
+        for (Post post : userFeed) {
+            if (post.author.equals(author)) {
+                foundPosts.add(post);
             }
         }
-    } 
-// Search for posts by a particular author and display them in reverse
-//chronological order (newest first).
-    public static void searchposts (Post p ){
-        Post [] found ;
-        for (int i = 0; i < user.length; i++){
-            if (p.author == user[i].author){
-                p.Add(found);    
+        for (Post post : foundPosts) {
+            System.out.println(post.author + " posted \"" + post.content + "\" at " + post.timestamp + ", likes = " + post.likes);
         }
-        }
-        for (int i = 0; i < found.length; i++){
-            System.out.println(found.author , found.content , found.likes);
     }
 }
-}
+
 public class q6 {
     public static void main(String[] args) {
+        // create posts
+        Post p1 = new Post("Rauf", "My first day at uni");
+        Post p2 = new Post("Ahsan", "My ecommerce journey");
+        Post p3 = new Post("Rauf", "Java or Python");
 
-        //create 
-        Post p1 = new Post("Rauf", "My first day at uni" );
-        Post p2 = new Post("ahsan" , "My ecommerce journey ");
-        Post p3 = new Post ("Rauf", "java or python ");
+        // create social media feeds
+        SocialMediaFeed raufFeed = new SocialMediaFeed();
+        SocialMediaFeed ahsanFeed = new SocialMediaFeed();
 
+        // add posts to feeds
+        raufFeed.addPost(p1);
+        raufFeed.addPost(p3);
+        ahsanFeed.addPost(p2);
 
-        SocialMediaFeed rauf = new SocialMediaFeed(p1,p3);
-        SocialMediaFeed ahsan = new SocialMediaFeed(p2);
+        // operations
+        raufFeed.addLike("Rauf");
+        ahsanFeed.addLike("Ahsan");
 
-        //ops
-        rauf.addlike(p1);
-        ahsan.addlike(p2);
+        System.out.println("Rauf's Feed:");
+        raufFeed.display();
 
-        rauf.display();
+        System.out.println("\nAhsan's Feed:");
+        ahsanFeed.display();
 
-        rauf.searchposts(p3);
-
-        ahsan.display();
-
-
-        
+        System.out.println("\n my posts:");
+        raufFeed.searchPosts("Rauf");
     }
 }
