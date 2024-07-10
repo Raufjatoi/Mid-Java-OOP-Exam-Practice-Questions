@@ -1,9 +1,10 @@
+// importin some libs 
 import java.util.ArrayList;
 import java.util.List;
 
-// Define class
+// class Dish
 class Dish {
-    // Member variables
+    // member variables or properties or attributes so many names 
     String name, description, category;
     int price;
 
@@ -14,34 +15,28 @@ class Dish {
         this.price = price;
         this.category = category;
     }
-
-    // Getter methods
+    // getter methods are kinda easy when u wanna get the value then doin those . thing 
     public String getName() {
         return name;
     }
-
     public int getPrice() {
         return price;
     }
-
     public String getDescription() {
         return description;
     }
-
     public String getCategory() {
         return category;
     }
 }
-
-// RestaurantMenu class
+// restaurant menu class
 class RestaurantMenu {
+    // atributes 
     static List<Dish> menu = new ArrayList<>(); 
-
-    // Constructor
+    // constructor
     public RestaurantMenu(List<Dish> menu) {
         this.menu = menu;
     }
-
     // add method 
     public static void addDish(Dish d) {
         for (Dish dish : menu) {
@@ -51,8 +46,7 @@ class RestaurantMenu {
         }
         menu.add(d);
     }
-
-    // Method to display
+    // method to display
     public static void display() {
         System.out.println("Category: Sweet");
         for (Dish dish : menu) {
@@ -60,7 +54,6 @@ class RestaurantMenu {
                 System.out.println(dish.getName() + ": " + dish.getDescription() + ", $" + dish.getPrice());
             }
         }
-
         System.out.println("Category: Spicy");
         for (Dish dish : menu) {
             if (dish.getCategory().equals("spicy")) {
@@ -69,7 +62,7 @@ class RestaurantMenu {
         }
     }
 
-    // Method to search 
+    // method to search 
     public static void search(String dishName) {
         for (Dish dish : menu) {
             if (dish.getName().equals(dishName)) {
@@ -80,8 +73,7 @@ class RestaurantMenu {
         }
         System.out.println("Dish not found");
     }
-
-    // Method to allow modification 
+    // method to allow some modification 
     public static void modifyDish(String dishName, int newPrice, String newDescription) {
         for (Dish dish : menu) {
             if (dish.getName().equals(dishName)) {
@@ -95,21 +87,19 @@ class RestaurantMenu {
     }
 }
 
-// Main class to run the program
+// main class to run the program
 public class q3 {
+    // main function 
     public static void main(String[] args) {
-        // Create a new dish
+        // creatin a new dish
         Dish d1 = new Dish("biryani", "traditional pakistani dish", 200, "spicy");
 
         // Add
         RestaurantMenu.addDish(d1);
-
         // Display
         RestaurantMenu.display();
-
         // Search
         RestaurantMenu.search("biryani");
-
         // Modify 
         RestaurantMenu.modifyDish("biryani", 250, "delicious traditional pakistani dish");
     }

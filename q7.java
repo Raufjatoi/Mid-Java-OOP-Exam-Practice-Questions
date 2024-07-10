@@ -1,11 +1,13 @@
+//importin libs 
 import java.util.ArrayList;
 
-// Product class
+// product class
 class Product {
+    // properties 
     String product_id, name, description;
     int price, stock_quantity;
 
-    // Constructor
+    // constructor
     public Product(String product_id, String name, String description, int price, int stock_quantity) {
         this.product_id = product_id;
         this.name = name;
@@ -14,43 +16,35 @@ class Product {
         this.stock_quantity = stock_quantity;
     }
 
-    // Getters
+    // getters method 
     public String getProductId() {
         return product_id;
     }
-
     public String getDescription() {
         return description;
     }
-
     public String getName() {
         return name;
     }
-
     public int getPrice() {
         return price;
     }
-
     public int getStockQuantity() {
         return stock_quantity;
     }
-
-    // Update stock quantity
+    // updaters method 
     public void updateStockQuantity(int quantity) {
         this.stock_quantity += quantity;
     }
 }
-
 // InventoryManager class
 class InventoryManager {
     static ArrayList<Product> stock = new ArrayList<>();
-
-    // Constructor
+    // constructor
     public InventoryManager(ArrayList<Product> stock) {
         this.stock = stock;
     }
-
-    // Add product
+    // addin 
     public static void add(Product p) {
         for (Product product : stock) {
             if (p.product_id.equals(product.product_id)) {
@@ -61,7 +55,7 @@ class InventoryManager {
         stock.add(p);
     }
 
-    // Update stock
+    // updatin  stock
     public static void updateStock(String productId, int quantity) {
         for (Product product : stock) {
             if (product.product_id.equals(productId)) {
@@ -72,7 +66,7 @@ class InventoryManager {
         System.out.println("Product not found.");
     }
 
-    // Search product
+    // searchin product
     public static void search(String productId) {
         for (Product product : stock) {
             if (product.product_id.equals(productId)) {
@@ -87,7 +81,7 @@ class InventoryManager {
         System.out.println("Product not found.");
     }
 
-    // Report
+    // reportin method 
     public static void report() {
         for (Product product : stock) {
             System.out.println("Product ID: " + product.product_id);
@@ -98,26 +92,26 @@ class InventoryManager {
         }
     }
 }
-
-// Main class
+// main class
 public class q7 {
+    // main method 
     public static void main(String[] args) {
-        // Create products
+        // creatin some products
         Product p1 = new Product("1", "Laptop", "Gaming laptop", 1500, 10);
         Product p2 = new Product("2", "Smartphone", "Latest model", 800, 20);
 
-        // Create inventory manager and add products
+        // creatin inventory manager and add products
         InventoryManager manager = new InventoryManager(new ArrayList<>());
         manager.add(p1);
         manager.add(p2);
 
-        // Update stock
+        // updatin stock
         manager.updateStock("1", 5);
 
-        // Search product
+        // searchin product
         manager.search("1");
 
-        // Generate report
+        // generatin report
         manager.report();
     }
 }
