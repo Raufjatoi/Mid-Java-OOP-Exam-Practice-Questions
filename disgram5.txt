@@ -1,0 +1,56 @@
++---------------------+
+|       LibraryItem   |
++---------------------+
+| - title: String     |
+| - id: String        |
++---------------------+
+| +getTitle(): String |
+| +getId(): String    |
++---------------------+
+        ^
+        |
++---------------------+      +----------------------+
+|       Book          |      |     Magazine          |
++---------------------+      +----------------------+
+| - author: String    |      | - issueNumber: int   |
+| - genre: String     |      +----------------------+
++---------------------+      | +getIssueNumber(): int|
+| +getAuthor(): String|      +----------------------+
+| +getGenre(): String |      | +getTitle(): String   |
+| +displayInfo(): void|      | +displayInfo(): void  |
++---------------------+      +----------------------+
+        ^
+        |
++---------------------+
+|     Member          |
++---------------------+
+| - memberId: String  |
+| - borrowedItems: List<LibraryItem> |
++---------------------+
+| +getMemberId(): String |
+| +borrowItem(item: LibraryItem): void |
+| +returnItem(item: LibraryItem): void |
+| +displayInfo(): void |
++---------------------+
+        ^
+        |
++---------------------+
+|      Staff          |
++---------------------+
+| - staffId: String   |
+| - role: String      |
++---------------------+
+| +getStaffId(): String |
+| +getRole(): String   |
+| +performDuty(): void |
++---------------------+
+        ^
+        |
++---------------------+
+|     Librarian       |
++---------------------+
+| - section: String   |
++---------------------+
+| +getSection(): String |
+| +performDuty(): void |
++---------------------+

@@ -23,7 +23,6 @@ class Course {
     public String getInstructor() {
         return instructor;
     }
-
     public int getCredits() {
         return credits;
     }
@@ -35,7 +34,6 @@ class Course {
     public void addStudent(Student student) {
         students.add(student);
     }
-
     public void removeStudent(Student student) {
         students.remove(student);
     }
@@ -47,7 +45,7 @@ class Student {
     String ID;
     List<Course> courses;
 
-    // Constructor
+    // constructor
     public Student(String name, String ID) {
         this.name = name;
         this.ID = ID;
@@ -88,9 +86,9 @@ class CourseManagement {
 
     // method to generate report
     public void generateReport(Student student) {
-        System.out.println("Student Name: " + student.getName());
-        System.out.println("Student ID: " + student.getID());
-        System.out.println("Enrolled Courses:");
+        System.out.println("stdent name: " + student.getName());
+        System.out.println("student ID: " + student.getID());
+        System.out.println("enrolled courses:");
         for (Course course : student.getCourses()) {
             System.out.println("  - " + course.getName() + " (Instructor: " + course.getInstructor() + ", Credits: " + course.getCredits() + ")");
         }
@@ -109,7 +107,7 @@ public class q5 {
         Student student2 = new Student("Ahsan", "bsai45");
         // creatin course management instance
         CourseManagement cm = new CourseManagement();
-        // enroll students in courses
+        // enrollin students in courses
         cm.enrollStudentInCourse(student1, course1);
         cm.enrollStudentInCourse(student1, course2);
         cm.enrollStudentInCourse(student2, course1);

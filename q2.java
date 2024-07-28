@@ -21,10 +21,10 @@ class Product {
     public int getPrice() {
         return price;
     }
-    // setters or updaters whatever 
     public int getQuantity() {
         return quantity;
     }
+    // setters or updaters whatever 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }

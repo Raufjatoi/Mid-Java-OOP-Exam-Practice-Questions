@@ -80,9 +80,9 @@ public class q4 {
     // main function 
     public static void main(String[] args) {
         // creating some songs and adding to playlist 
-        Song song1 = new Song("Song 1", "Artist A", "Pop", 240);
-        Song song2 = new Song("Song 2", "Artist B", "Rock", 200);
-        Song song3 = new Song("Song 3", "Artist C", "Pop", 180);
+        Song song1 = new Song("Tide", "Ed sheeran", "Pop", 240);
+        Song song2 = new Song("Blinding lights", "The weekend", "Rock", 200);
+        Song song3 = new Song("Not Afraid", "EM", "Rap", 180);
         MusicPlayer player = new MusicPlayer();
         player.addSong(song1);
         player.addSong(song2);

@@ -1,0 +1,12 @@
++----------------+       +----------------+       +----------------+       +------------------+
+|   Customer     |       |    Product     |       |     Order      |       |  ShoppingCart    |
++----------------+       +----------------+       +----------------+       +------------------+
+| - name: String |       | - productId: int |     | - orderId: int |       | - items: List<Product>|
+| - email: String|       | - name: String |       | - date: Date   |       | - customer: Customer  |
+| - address: String |    | - price: double |       | - total: double|       +------------------+
++----------------+       +----------------+       +----------------+       | +addProduct(product: Product): void |
+| +getName(): String  |  | +getName(): String  | | +getOrderId(): int |   | +removeProduct(product: Product): void |
+| +getEmail(): String |  | +getPrice(): double | | +getDate(): Date  |   | +getTotal(): double   |
+| +getAddress(): String| |                    | | +getTotal(): double|   +------------------+
++----------------+       +----------------+       +----------------+       | +getItems(): List<Product>|
+                        +----------------+                                +------------------+

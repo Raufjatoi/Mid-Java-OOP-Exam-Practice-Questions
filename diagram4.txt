@@ -1,0 +1,48 @@
++------------------+
+|     Person       |
++------------------+
+| - name: String   |
+| - age: int       |
+| - address: String|
++------------------+
+| +getName(): String |
+| +getAge(): int    |
+| +getAddress(): String |
++------------------+
+        ^
+        |
+        +------------------------+
+        |                        |
++------------------+      +---------------------+
+|    Patient       |      |     Staff           |
++------------------+      +---------------------+
+| - patientId: int |      | - staffId: int      |
+| - medicalHistory: String | - role: String    |
++------------------+      +---------------------+
+| +getPatientId(): int |  | +getStaffId(): int  |
+| +getMedicalHistory(): String | +getRole(): String |
+| +addMedicalRecord(record: String): void | +performDuty(): void |
++------------------+      +---------------------+
+        ^
+        |
++------------------+      +---------------------+
+|    Doctor        |      |    Nurse            |
++------------------+      +---------------------+
+| - specialty: String |  | - shift: String     |
++------------------+      +---------------------+
+| +getSpecialty(): String | +getShift(): String |
+| +performDuty(): void |  | +performDuty(): void |
++------------------+      +---------------------+
+        ^
+        |
++------------------+
+|  MedicalRecord   |
++------------------+
+| - recordId: int  |
+| - date: Date     |
+| - details: String|
++------------------+
+| +getRecordId(): int |
+| +getDate(): Date   |
+| +getDetails(): String |
++------------------+

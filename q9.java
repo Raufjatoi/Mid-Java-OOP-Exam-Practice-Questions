@@ -1,13 +1,14 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 
-// The Stock class holds the details about a stock: company name, symbol, current price, and past prices.
+// Stock class
 class Stock {
-    String companyName, symbol; // Company name and stock symbol
-    double currentPrice; // Current stock price
-    int[] historicalPrices = new int[10]; // Array for last 10 prices
-
-    // Constructor to create a new stock
+    // Properties
+    String companyName, symbol;
+    double currentPrice;
+    int[] historicalPrices = new int[10];
+    
+    // Constructor
     public Stock(String companyName, String symbol, double currentPrice, int[] historicalPrices) {
         this.companyName = companyName;
         this.symbol = symbol;
@@ -15,7 +16,7 @@ class Stock {
         this.historicalPrices = historicalPrices;
     }
 
-    // Getter methods to access the stock's details
+    // Getters
     public String getCompanyName() {
         return companyName;
     }
@@ -33,24 +34,23 @@ class Stock {
     }
 }
 
-// The StockMarket class manages a bunch of stocks and simulates the market.
+// StockMarket class
 class StockMarket {
-    ArrayList<Stock> market; // List to hold all stocks
+    // Properties
+    ArrayList<Stock> market;
 
-    // Constructor to create a stock market with a list of stocks
+    // Constructor
     public StockMarket(ArrayList<Stock> market) {
         this.market = market;
     }
 
-    // Method to randomly update stock prices
     public void updatePrices() {
         for (Stock stock : market) {
-            double change = (Math.random() - 0.5) * 10; // Random change between -5 and +5
+            double change = (Math.random() - 0.5) * 10;
             stock.currentPrice += change;
         }
     }
 
-    // Method to let users buy stocks
     public void buyStock(String symbol, int shares, User user) {
         for (Stock stock : market) {
             if (stock.getSymbol().equals(symbol)) {
@@ -60,7 +60,6 @@ class StockMarket {
         }
     }
 
-    // Method to let users sell stocks
     public void sellStock(String symbol, int shares, User user) {
         for (Stock stock : market) {
             if (stock.getSymbol().equals(symbol)) {
@@ -70,7 +69,6 @@ class StockMarket {
         }
     }
 
-    // Method to calculate the total value of a user's portfolio
     public double calculatePortfolioValue(User user) {
         double totalValue = 0;
         for (Stock stock : market) {
@@ -79,7 +77,6 @@ class StockMarket {
         return totalValue;
     }
 
-    // Method to calculate the moving average of a stock's price
     public double calculateMovingAverage(String symbol, int days) {
         for (Stock stock : market) {
             if (stock.getSymbol().equals(symbol)) {
@@ -95,16 +92,14 @@ class StockMarket {
     }
 }
 
-// The User class keeps track of a user's stock holdings
+// User class
 class User {
-    private HashMap<Stock, Integer> holdings = new HashMap<>(); // Map to store stock and number of shares
+    private HashMap<Stock, Integer> holdings = new HashMap<>();
 
-    // Method to buy shares of a stock
     public void buyShares(Stock stock, int shares) {
         holdings.put(stock, holdings.getOrDefault(stock, 0) + shares);
-    }
+    }    
 
-    // Method to sell shares of a stock
     public void sellShares(Stock stock, int shares) {
         if (holdings.containsKey(stock)) {
             int currentShares = holdings.get(stock);
@@ -116,8 +111,58 @@ class User {
         }
     }
 
-    // Method to get the number of shares of a specific stock
     public int getShares(Stock stock) {
         return holdings.getOrDefault(stock, 0);
+    }
+}
+
+public class q9 {
+    public static void main(String[] args) {
+        // Create some stocks
+        Stock apple = new Stock("Apple Inc.", "AAPL", 150.0, new int[]{150, 148, 149, 147, 150, 151, 152, 153, 150, 148});
+        Stock google = new Stock("Alphabet Inc.", "GOOGL", 2800.0, new int[]{2800, 2780, 2790, 2805, 2810, 2820, 2830, 2815, 2800, 2795});
+        Stock microsoft = new Stock("Microsoft Corp.", "MSFT", 300.0, new int[]{300, 298, 299, 297, 300, 302, 304, 305, 300, 298});
+
+        // Add stocks to the market
+        ArrayList<Stock> market = new ArrayList<>();
+        market.add(apple);
+        market.add(google);
+        market.add(microsoft);
+        StockMarket stockMarket = new StockMarket(market);
+
+        // Create some users
+        User rauf = new User();
+        User umar = new User();
+        User ahsan = new User();
+
+        // Users buy some stocks
+        stockMarket.buyStock("AAPL", 10, rauf);
+        stockMarket.buyStock("GOOGL", 5, umar);
+        stockMarket.buyStock("MSFT", 15, ahsan);
+
+        // Display portfolio values
+        System.out.println("Rauf's portfolio value: $" + stockMarket.calculatePortfolioValue(rauf));
+        System.out.println("Umar's portfolio value: $" + stockMarket.calculatePortfolioValue(umar));
+        System.out.println("Ahsan's portfolio value: $" + stockMarket.calculatePortfolioValue(ahsan));
+
+        // Update stock prices
+        stockMarket.updatePrices();
+
+        // Display portfolio values after price update
+        System.out.println("After price update:");
+        System.out.println("Rauf's portfolio value: $" + stockMarket.calculatePortfolioValue(rauf));
+        System.out.println("Umar's portfolio value: $" + stockMarket.calculatePortfolioValue(umar));
+        System.out.println("Ahsan's portfolio value: $" + stockMarket.calculatePortfolioValue(ahsan));
+
+        // Users sell some stocks
+        stockMarket.sellStock("AAPL", 5, rauf);
+        stockMarket.sellStock("GOOGL", 2, umar);
+        stockMarket.sellStock("MSFT", 10, ahsan);
+
+        // Display portfolio values after selling
+        System.out.println("After selling stocks:");
+        System.out.println("Rauf's portfolio value: $" + stockMarket.calculatePortfolioValue(rauf));
+        System.out.println("Umar's portfolio value: $" + stockMarket.calculatePortfolioValue(umar));
+        System.out.println("Ahsan's portfolio value: $" + stockMarket.calculatePortfolioValue(ahsan));
     }
 }

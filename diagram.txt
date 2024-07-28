@@ -1,0 +1,9 @@
++----------------+       +----------------+       +----------------+
+|     Book       |       |    Author      |       |    Library     |
++----------------+       +----------------+       +----------------+
+| - title: String|       | - name: String |       | - books: List<Book> |
+| - ISBN: String |       | - birthdate: Date |    | - authors: List<Author>|
++----------------+       +----------------+       +----------------+
+| +getTitle(): String  | | +getName(): String |   | +addBook(book: Book): void |
+| +getISBN(): String   | | +getBirthdate(): Date| | +removeBook(book: Book): void|
++----------------+       +----------------+       +----------------+

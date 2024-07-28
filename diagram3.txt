@@ -1,0 +1,35 @@
++------------------+
+|     Employee     |
++------------------+
+| - id: int        |
+| - name: String   |
+| - salary: double |
++------------------+
+| +getId(): int    |
+| +getName(): String |
+| +getSalary(): double |
++------------------+
+        
+        |
+        +----------------------+
+        |                      |
++---------------+       +------------------+
+|    Manager    |       |    Engineer      |
++---------------+       +------------------+
+| - department: String | - skills: List<String> |
++---------------+       +------------------+
+| +getDepartment(): String | +getSkills(): List<String> |
+| +setDepartment(department: String): void | +addSkill(skill: String): void |
++---------------+       +------------------+
+        ^
+        |
++------------------+
+|   Department     |
++------------------+
+| - name: String   |
+| - location: String|
++------------------+
+| +getName(): String |
+| +getLocation(): String |
+| +setLocation(location: String): void |
++------------------+
